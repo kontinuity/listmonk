@@ -42,3 +42,4 @@ require (
 )
 
 replace github.com/imdario/mergo => github.com/imdario/mergo v0.3.8
+replace github.com/knadh/smtppool => ./packages/smtppool

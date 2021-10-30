@@ -318,6 +318,9 @@ func (m *Manager) worker() {
 				case m.campMsgErrorQueue <- msgError{camp: msg.Campaign, err: err}:
 				default:
 				}
+			} else {
+				m.logger.Printf("successfully sent message in campaign %s: subscriber %s (%s)",
+					msg.Campaign.Name, msg.Subscriber.UUID, msg.to)
 			}
 
 		// Arbitrary message.
