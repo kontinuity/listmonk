@@ -115,13 +115,12 @@ func (p *Pool) Send(e Email) error {
 	// Get a connection from the pool.
 	var lastErr error
 	for i := 0; i < p.opt.MaxMessageRetries; i++ {
-		fmt.Printf("borrowing connection from pool for '%v'\n", e.To)
 		c, err := p.borrowConn()
 		if err != nil {
 			return err
 		}
 
-		fmt.Printf("sending email to '%v'\n", e.To)
+		fmt.Printf("sending email to '%s'\n", e.To)
 		// Send the message.
 		canRetry, err := c.send(e)
 		if err == nil {
